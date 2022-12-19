@@ -3,13 +3,13 @@
   <xacro:macro name="franka_robot" params="arm_id joint_limits">
     <!-- Name of this panda -->
     <!-- Should a franka_gripper be mounted at the flange?" -->
-    <xacro:arg name="hand" default="false" />
+    <xacro:arg name="hand" default="true" />
     <!-- Positional offset between $(arm_id)_hand -> $(arm_id)_hand_tcp [m]. Only used when hand:=true -->
     <xacro:arg name="tcp_xyz" default="0 0 0.1034" />
     <!-- Rotational offset between $(arm_id)_hand -> $(arm_id)_hand_tcp [rad]. Only used when hand:=true -->
     <xacro:arg name="tcp_rpy" default="0 0 0" />
     <!-- Is the robot being simulated in gazebo?" -->
-    <xacro:arg name="gazebo" default="false" />
+    <xacro:arg name="gazebo" default="true" />
 
     <xacro:include filename="$(find franka_description)/robots/common/utils.xacro" />
     <xacro:include filename="$(find franka_description)/robots/common/franka_arm.xacro" />
@@ -36,12 +36,12 @@
       <xacro:arg name="rpy" default="0 0 0" />
 
       <!-- Gazebo requires a joint to a link called "world" for statically mounted robots -->
-      <link name="world" />
+      <!-- <link name="world" />
       <joint name="world_joint" type="fixed">
         <origin xyz="$(arg xyz)" rpy="$(arg rpy)" />
         <parent link="world" />
         <child  link="$(arg arm_id)_link0" />
-      </joint>
+      </joint> -->
 
       <xacro:gazebo-joint joint="${arm_id}_joint1" transmission="hardware_interface/PositionJointInterface" />
       <xacro:gazebo-joint joint="${arm_id}_joint2" transmission="hardware_interface/PositionJointInterface" />
