@@ -1,4 +1,6 @@
-#It is a knockabout copy of repo https://github.com/frankaemika/franka_ros
+#Important info
+
+It is a knockabout copy of repo https://github.com/frankaemika/franka_ros
 
 
 # ROS integration for Franka Emika research robots
